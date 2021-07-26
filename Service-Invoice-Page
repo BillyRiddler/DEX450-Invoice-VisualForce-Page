@@ -1,0 +1,70 @@
+<apex:page StandardController="Service_Invoice__c" RenderAs="PDF" >
+
+  <h1>Service Invoice</h1>
+  
+  <apex:panelGrid Columns="1">
+      <apex:outputText value="Invoice Number: "/>
+      <apex:outputField value="{!Service_Invoice__c.Name}" />
+      <apex:outputText value="Submission Date" />
+      <apex:outputField value="{!Service_Invoice__c.Submission_Date__c}" />
+  </apex:panelGrid>
+  
+  
+  <h2> {!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.Name} </h2>
+
+<apex:panelGrid columns="2" width="1050px">
+    <apex:outputtext value="Mail To: " />
+    <apex:outputText value="Bill To: " />
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.Account_Contact__c}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.Account_Contact__c}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.ShippingStreet}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.BillingStreet}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.ShippingCity}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.BillingCity}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.ShippingState}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.BillingState}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.ShippingPostalCode}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.BillingPostalCode}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.ShippingCountry}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.BillingCountry}"/>
+    
+
+
+</apex:panelGrid>
+
+<br>
+</br>
+<h3>Course Details </h3>
+<apex:panelGrid columns="4" border="3" width="700">
+    <apex:outputText value="Course Title"/>
+    <apex:outputText value="Location"/>
+    <apex:outputText value="Instructor"/>
+    <apex:outputText value="Hourly Rate"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Course_Title__c}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Location__c}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor__c}"/>
+    <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Hourly_Rate__c}"/>
+
+</apex:panelGrid>
+
+<apex:pageBlock title="Service Line Items" >
+    <apex:pageBlockTable value="{!Service_Invoice__c.Service_Line_Items__r}" var="SLI" rendered="true" Width="700px" border="5px">
+        <apex:column value="{!SLI.Date_Worked__c}" />
+        <apex:column value="{!SLI.name}" headerValue="Service Line Item"/>
+        <apex:column value="{!SLI.Hours_Worked__c}"/>
+        <apex:column value="{!SLI.VAT__c}"/>
+        <apex:column value="{!SLI.Day_Total__c}"/>
+    </apex:pageBlockTable>
+</apex:pageBlock>
+
+<apex:panelGrid columns="3" id="theGrid" width="700px" border="5">
+        <apex:outputText value="Sub total" id="TheSubtotal" />
+        <apex:outputText value="VAT Amount" id="theVAT"/>
+        <apex:outputText value="Total with VAT" id="TotalWithVAT"/>
+        <apex:outputText value="{!Service_Invoice__c.Sub_total__c}" id="Hello2"/>
+        <apex:outputText value="{!Service_Invoice__c.VAT_Amount__c}" id="Hello3"/>
+        <apex:outputText value="{!Service_Invoice__c.VAT__c}" id="Hello4"/>
+</apex:panelGrid>
+ 
+</apex:page>
+               
