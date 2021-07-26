@@ -27,13 +27,11 @@
     <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.BillingPostalCode}"/>
     <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.ShippingCountry}"/>
     <apex:outputField value="{!Service_Invoice__c.Course__r.Instructor_and_Course_Code__r.Account__r.BillingCountry}"/>
-    
-
-
 </apex:panelGrid>
 
 <br>
 </br>
+
 <h3>Course Details </h3>
 <apex:panelGrid columns="4" border="3" width="700">
     <apex:outputText value="Course Title"/>
